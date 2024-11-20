@@ -46,7 +46,7 @@ if args.block_type == 'conv_block':
     dim_reduction_block_type = ConvolutionalDimensionalityReductionBlock
 elif args.block_type == 'res_block':
     processing_block_type = ConvolutionalProcessingBlockRC
-    dim_reduction_block_type = ConvolutionalDimensionalityReductionBlockBNRC
+    dim_reduction_block_type = ConvolutionalDimensionalityReductionBlock
 elif args.block_type == 'res_block_bn':
     processing_block_type = ConvolutionalProcessingBlockBNRC
     dim_reduction_block_type = ConvolutionalDimensionalityReductionBlockBNRC
