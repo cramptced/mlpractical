@@ -150,6 +150,7 @@ class ExperimentBuilder(nn.Module):
         """
         ########################################
         def prune(layer):
+            print(layer)
             ls = layer.split(".")
             return ls[1]+ls[2]
         
