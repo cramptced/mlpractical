@@ -30,6 +30,7 @@ def get_args():
                         help='Number of convolutional stages in the network. A stage is considered a sequence of '
                              'convolutional layers where the input volume remains the same in the spacial dimension and'
                              ' is always terminated by a dimensionality reduction stage')
+    parser.add_argument('--learn_rate', nargs="?", type=float, default=1e-3)
     parser.add_argument('--num_blocks_per_stage', nargs="?", type=int, default=5,
                         help='Number of convolutional blocks in each stage, not including the reduction stage.'
                              ' A convolutional block is made up of two convolutional layers activated using the '
