@@ -151,7 +151,7 @@ class ExperimentBuilder(nn.Module):
         ########################################
         def prune(layer):
             ls = [i for i in layer.split(".") if i != "layer_dict"]
-            return ls.join("")
+            return "".join(ls)
         
         for name, param in named_parameters:
             if param.requires_grad and "bias" not in name:
