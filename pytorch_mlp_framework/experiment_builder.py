@@ -155,7 +155,7 @@ class ExperimentBuilder(nn.Module):
         
         for name, param in named_parameters:
             if param.requires_grad and "bias" not in name:
-                layers.append(name)
+                layers.append(prune(name))
                 all_grads.append(param.grad.abs().mean().item())
                 print(f"Layer: {prune(name)}, Gradient: {param.grad.abs().mean().item()}")
             
