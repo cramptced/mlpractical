@@ -150,15 +150,14 @@ class ExperimentBuilder(nn.Module):
         """
         ########################################
         def prune(layer):
-            return layer[0:layer.find('.')]
+            ls = layer.split(".")
+            return ls[1]+ls[2]
         
         for name, param in named_parameters:
             if param.requires_grad and "bias" not in name:
-                print(name)
-                print(prune(name))
                 layers.append(name)
                 all_grads.append(param.grad.abs().mean().item())
-                print(f"Layer: {name}, Gradient: {param.grad.abs().mean().item()}")
+                print(f"Layer: {prune(name)}, Gradient: {param.grad.abs().mean().item()}")
             
         
         plt = self.plot_func_def(all_grads, layers)
