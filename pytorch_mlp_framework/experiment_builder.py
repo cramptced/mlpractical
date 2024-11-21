@@ -150,8 +150,8 @@ class ExperimentBuilder(nn.Module):
         """
         ########################################
         def prune(layer):
-            ls = [i for i in layer.split(".") if i != "layer_dict"]
-            return "".join(ls)
+            ls = [i for i in layer.split(".") if i not in ["layer_dict","weight"]]
+            return "_".join(ls)
         
         for name, param in named_parameters:
             if param.requires_grad and "bias" not in name:
@@ -300,7 +300,7 @@ class ExperimentBuilder(nn.Module):
             if not os.path.exists(os.path.join(self.experiment_saved_models, 'gradient_flow_plots')):
                 os.mkdir(os.path.join(self.experiment_saved_models, 'gradient_flow_plots'))
                 # plt.legend(loc="best")
-            plt.savefig(os.path.join(self.experilsment_saved_models, 'gradient_flow_plots', "epoch{}.pdf".format(str(epoch_idx))))
+            plt.savefig(os.path.join(self.experiment_saved_models, 'gradient_flow_plots', "epoch{}.pdf".format(str(epoch_idx))))
             ################################################################
         
         print("Generating test set evaluation metrics")
